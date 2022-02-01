@@ -1,0 +1,13 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_automatic_natcom_record" model="ir.sequence">
+            <field name="name">automatic.natcom.record</field>
+            <field name="code">automatic.natcom.record</field>
+            <field name="prefix">NAT/AUTO/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

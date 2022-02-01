@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+         <record id="account_invoice_mk_form" model="ir.ui.view">
+            <field name="name">account.invoice</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                  <xpath expr="//field[@name='team_id']" position="after">
+                    <field name="a_total_amount"/>
+                    <field name="a_net_amount"/>
+                    <field name="a_vat_value"/>
+                    <field name="a_net_with_value"/>
+                </xpath>
+            </field>
+    </record>
+
+     <record id="automatic_natcom_record_tree" model="ir.ui.view">
+        <field name="name">automatic.natcom.record.tree</field>
+        <field name="model">automatic.natcom.record</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="company_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="natcom_auto_form" model="ir.ui.view">
+        <field name="name">Sales Report </field>
+        <field name="model">automatic.natcom.record</field>
+        <field name="arch" type="xml">
+            <form string="Sales Report">
+                <header>
+                    <button name="auto_confirm_all" string="Confirm all" states="draft" type="object" class="btn-primary"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,close"/>
+
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <field name="name"/>
+                    </div>
+                    <group>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="company_id"/>
+
+                    </group>
+                        <group>
+
+
+                    </group>
+                    </group>
+                     <notebook>
+                        <page string="Invoice Lines">
+                            <field name="op_lines">
+                                <tree editable="bottom">
+                                    <field name="invoice_id"/>
+                                    <field name="system_inv_no"/>
+                                    <field name="partner_id"/>
+                                    <field name="state"/>
+                                    <field name="amount"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                     </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="natcom_auto_form_action" model="ir.actions.act_window">
+        <field name="name">AUTO NATCOM FORM</field>
+        <field name="res_model">automatic.natcom.record</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create New Record Form Here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="AUTO NATCOM FORM"
+              id="natcom_auto_form_id" sequence="3"
+              parent="natcomjson.api_calling_main_sub"
+              action="natcom_auto_form_action"
+              />
+
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_automatic_natcom_record,automatic.natcom.record,model_automatic_natcom_record,,1,1,1,1
+access_automatic_natcom_reclines,automatic.natcom.reclines,model_automatic_natcom_reclines,,1,1,1,1
